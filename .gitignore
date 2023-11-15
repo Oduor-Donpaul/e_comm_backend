@@ -1,0 +1,48 @@
+# .gitignore
+
+# Ignore virtual environment
+/.venv
+
+# Ignore Pipfile and Pipfile.lock
+Pipfile
+Pipfile.lock
+
+# Ignore local development settings
+/.env
+
+# Ignore database file
+/db.sqlite3
+
+# Ignore static files
+/staticfiles/
+
+# Ignore media files
+/media/
+
+# Ignore IDE files
+*.pyc
+*.pyo
+__pycache__/
+.vscode/
+.idea/
+
+# Ignore local configuration
+.env.local
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore logs
+*.log
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore SQLite database
+*.sqlite3
+
+# Ignore pytest cache
+__pycache__/
+.pytest_cache/
+
