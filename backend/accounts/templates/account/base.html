@@ -1,0 +1,40 @@
+<!-- base.html -->
+
+{% load static %}
+{% load account static allauth %}
+{% load socialaccount %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Site{% endblock %}</title>
+    <!-- Add your CSS styles or include external stylesheets here -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <!-- Your site header content, e.g., logo, navigation links, etc. -->
+        <div class="logo">
+            <img src="{% static 'images/your-logo.png' %}" alt="Your Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Main content of the authentication pages goes here -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Your site footer content -->
+        <p>&copy; 2023 Your Site. All rights reserved.</p>
+    </footer>
+</body>
+</html>
