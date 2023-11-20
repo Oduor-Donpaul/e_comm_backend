@@ -1,0 +1,15 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+
+    <h2>My Account</h2>
+    <ul>
+        <li>Profile</li>
+        <li>Orders</li>
+        <li>Email Notification</li>
+        <li>Shipping Adress</li>
+        <li><a href="{% url 'password_change' %}">Change Password</a></li>
+        <li>Settings</li>
+    </ul>
+
+{% endblock %}

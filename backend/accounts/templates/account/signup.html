@@ -1,13 +1,24 @@
 <!-- account/signup -->
 
+
 {% extends 'account/base.html' %}
 
+{% load socialaccount %}
+
 {% block content %}
-    <h2>SIGN UP</h2>
-    <form method="post" action="{% url 'account_signup' %}">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <button type="submit">Sign Up</button>
-    </form>
+    <div class="container">
+        <h2>SIGN UP</h2>
+            <form method="post" action="{% url 'account_signup' %}?next={{ request.GET.next }}">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <p>OR</p>
+        
+        <p><a href="{% provider_login_url 'google' %}">Sign Up with Google</a></p>
+    
+        <P>Have account? <a href="{% url 'account_login' %}">SIGN IN</a></P>
+    </div>
 
 {% endblock %}

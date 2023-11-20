@@ -22,9 +22,12 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
+                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                <li><a href="{% url 'account_login' %}">Login</a></li>
                 <!-- Add more navigation links as needed -->
             </ul>
         </nav>
+        <p></p>
     </header>
 
     <main>
@@ -34,7 +37,7 @@
 
     <footer>
         <!-- Your site footer content -->
-        <p>&copy; 2023 Your Site. All rights reserved.</p>
+        <p id="copy" >&copy; 2023 Legado. All rights reserved.</p>
     </footer>
 </body>
 </html>

@@ -48,3 +48,8 @@ a:hover {
 p {
     margin-top: 10px;
 }
+
+#copy {
+    text-align: center;
+    margin-top: 20px;
+}

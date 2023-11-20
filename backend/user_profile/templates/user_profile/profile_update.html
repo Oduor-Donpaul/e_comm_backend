@@ -1,0 +1,14 @@
+
+{% extends 'account/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <form method="post" action="{% url 'user_profile:update' user_profile_id=user_profile.pk %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form> 
+    </div>
+
+{% endblock %}

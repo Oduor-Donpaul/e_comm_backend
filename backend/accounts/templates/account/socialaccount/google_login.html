@@ -1,0 +1,26 @@
+{% extends 'account/base.html' %}
+
+{% load socialaccount %}
+
+{% block title %}Sign In with Google{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'images/google_logo.jpeg' %}" alt="Google logo">
+        </div>
+
+        <h2>Sign Up with Google</h2>
+
+        <form method="post" action="{% provider_login_url 'google' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Sign In with Google</button>
+        
+        </form>
+
+        <p>Don't have an account? <a href="{% url 'account_signup' %}">Sign up</a></a></p>
+    </div>
+{% endblock %}

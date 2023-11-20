@@ -16,12 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from accounts.views import CustomLoginView, CustomSignupView
+from accounts.views import  CustomLoginView, CustomSignupView, CustomPasswordResetView
+from accounts.views import HomePageView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import PasswordChangeView
+
+app_name = 'profile'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/login/', CustomLoginView.as_view(), name='account_login'),
     path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
+    path('user_profile/', include('user_profile.urls')),
+    path('accounts/password/reset/', CustomPasswordResetView.as_view(), name='account_reset_password'),
     path('accounts/', include('allauth.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('login/', CustomLoginView.as_view(), name='account_login'),
+    path('', HomePageView.as_view(), name='home' ),
+    path('password_change/', login_required(PasswordChangeView.as_view()), name='password_change'),
 
 ]

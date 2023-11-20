@@ -42,7 +42,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user_profile',
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google':{
+        'APP':{
+            'client_id':'465448248516-qdplnvr0emt7cap42m1g0l8iq78sfb5b.apps.googleusercontent.com',
+            'secret':'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',
+            'key':''
+        },
+        'SCOPE':[
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS':{
+            'access_type':'online',
+        }
+    }
+}
+
 
 SITE_ID = 1
 
@@ -94,13 +113,23 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 #custom signup view
 ACCOUNT_SIGNUP_VIEW = 'accounts.views.CustomSignupView'
 
+#custom reset password view
+ACCOUNT_PASSWORD_RESET_VIEW = 'accounts.views.CustomPasswordResetView'
+
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+LOGIN_REDIRECT_URL = 'home'
+#SOCIALACCOUNT_TEMPLATE = 'account/socialaccount/google_login.html'
 
 
 AUTHENTICATION_BACKENDS = [
-    'allauth.account.auth_backends.AuthenticationBackend'
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
