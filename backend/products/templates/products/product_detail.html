@@ -1,0 +1,25 @@
+<!-- product_detail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }} - Product Detail</title>
+</head>
+<body>
+    <h3>{{ product.name }}</h3>
+    <img src="{{ product.thumbnails.url }}" alt="{{ product.name }}">
+    <img src="{{ product.image.url }}" alt="{{ Product.name }}">
+    <p>{{ product.description }}</p>
+    <p>{{ product.discounted_price }}</p>
+    <p>{{ product.rating }}</p>
+    {% if product.is_favorite %}
+    <p> Favorite </p>
+    {% else %}
+    <p> Not favorite</p>
+    {% endif %}
+    <script>
+        console.log("Image URL:", "{{ product.image.url }}");
+    </script>
+
+</body>
+</html>

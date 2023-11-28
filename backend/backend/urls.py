@@ -20,6 +20,11 @@ from accounts.views import  CustomLoginView, CustomSignupView, CustomPasswordRes
 from accounts.views import HomePageView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordChangeView
+from products.views import home, product_datail
+from django.conf import settings
+from django.conf.urls.static import static
+from blogs.views import blog_page, blog_detail
+from user_profile.views import add_shipping_adress
 
 app_name = 'profile'
 
@@ -31,7 +36,14 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('accounts/', include('accounts.urls')),
     path('login/', CustomLoginView.as_view(), name='account_login'),
-    path('', HomePageView.as_view(), name='home' ),
+    path('', home, name='home' ),
     path('password_change/', login_required(PasswordChangeView.as_view()), name='password_change'),
-
+    path('product/<int:product_id>/', product_datail, name='product_datail'),
+    path('blogs/', blog_page, name='blog_page'),
+    path('blog/<int:blog_id>/', blog_detail, name='blog_detail'),
+    path('add_shipping_adress/', add_shipping_adress, name='add_shipping_adress'),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

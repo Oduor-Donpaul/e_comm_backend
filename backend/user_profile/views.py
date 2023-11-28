@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import DetailView, UpdateView
 from .models import UserProfile
-from .forms import UserProfileForm
+from .forms import UserProfileForm, ShippingAdressForm
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from .forms import ShippingAdressForm
 
 class UserProfileView(DetailView):
     model = UserProfile #model for retrieving data
@@ -28,3 +29,32 @@ def edit_user_profile(request, user_profile_id):
 @login_required
 def account(request):
     return render(request, 'user_profile/my_account.html')
+"""
+def add_shipping_adress(request):
+    if request.method == 'POST':
+        form = ShippingAdressForm(request.POST)
+        if form.is_valid():
+            shipping_adress = form.save(commit=False)
+            shipping_adress.save()
+            form = ShippingAdressForm()
+            return render(request, 'user_profile/add_shipping_adress.html', { 'form':form })
+        
+        else:
+
+            form = ShippingAdressForm()
+
+            return render(request, 'user_profile/add_shipping_adress.html', {'form': form})
+"""
+
+def add_shipping_adress(request):
+    if request.method == 'POST':
+        form = ShippingAdressForm(request.POST)
+        if form.is_valid():
+            shipping_address = form.save(commit=False)
+            shipping_address.save()
+            form = ShippingAdressForm()  # Reset the form for a new entry
+            return render(request, 'user_profile/shipping_adress_saved.html', {'form': form})
+
+    # If the request method is not POST or the form is not valid, render the form page
+    form = ShippingAdressForm()
+    return render(request, 'user_profile/add_shipping_adress.html', {'form': form})

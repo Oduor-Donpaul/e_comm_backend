@@ -1,0 +1,14 @@
+<!-- blogs.html--> 
+<h2>Blogs</h2>
+
+<ul>
+    {% for blog in blogs %}
+        <h3>{{ blog.tittle }}</h3>
+        <ul>
+            <img src="{{ blog.thumbnails.url }}" alt="{{ blog.name }}">
+            <li>{{ blog.date }}</li>
+            <li>{{ blog.author }}</li>
+            <li>{{ blog.content }}</li>
+        </ul>
+    {% endfor %}
+</ul>

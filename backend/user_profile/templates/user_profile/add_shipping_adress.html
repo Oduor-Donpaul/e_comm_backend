@@ -1,0 +1,7 @@
+<div class="container">
+    <form method="post" action="{% url 'add_shipping_adress' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Address</button>
+    </form>
+</div>

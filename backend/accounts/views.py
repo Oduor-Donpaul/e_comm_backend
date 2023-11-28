@@ -9,6 +9,7 @@ from django.contrib.auth import login
 from django.views.generic import DetailView, UpdateView
 from .models import CustomUser
 from django.views.generic import TemplateView
+from django.contrib.auth.views import PasswordChangeView
 
 class CustomSignupView(SignupView):
     template_name = 'account/signup.html'#path to custom view

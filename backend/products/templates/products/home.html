@@ -1,0 +1,50 @@
+<!-- home.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My E-commerce Site</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <!-- Add links for other categories -->
+        </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside>
+       
+        <!-- Add filters as needed -->
+    </aside>
+        <!-- home.html -->
+<h2>Categories</h2>
+<ul>
+    {% for category in categories %}
+        <li>
+            {% if not category.parent %}
+            {{ category.name }}
+            {% endif %}
+            {% if category.children.all %}
+                <ul>
+                    {% for subcategory in category.children.all %}
+                        <li>{{ subcategory.name }}</li>
+                        <!-- Add more levels if needed -->
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Featured Products</h1>
+        {% for product in products %}
+            <!-- Display product information -->
+        {% endfor %}
+    </main>
+</body>
+</html>
