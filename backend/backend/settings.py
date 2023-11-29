@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'products',
     'imagekit',
     'blogs',
+    'properties',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {

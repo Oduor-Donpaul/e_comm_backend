@@ -1,4 +1,3 @@
-import sys
 from django.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
@@ -14,6 +13,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=15, decimal_places=2, default=99.00)
     description = models.TextField()
     rating = models.FloatField()
     is_favorite = models.BooleanField(default=False)

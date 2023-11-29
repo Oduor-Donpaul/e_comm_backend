@@ -25,6 +25,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from blogs.views import blog_page, blog_detail
 from user_profile.views import add_shipping_adress
+from properties.views import property_details, property_page_view, owner_details
 
 app_name = 'profile'
 
@@ -42,6 +43,9 @@ urlpatterns = [
     path('blogs/', blog_page, name='blog_page'),
     path('blog/<int:blog_id>/', blog_detail, name='blog_detail'),
     path('add_shipping_adress/', add_shipping_adress, name='add_shipping_adress'),
+    path('properties/', property_page_view, name='property_page'),
+    path('properties/<int:property_id>/', property_details, name='property_details'),
+    path('properties/owner/<int:owner_id>/', owner_details, name='owner_details'),
 ]
 
 
